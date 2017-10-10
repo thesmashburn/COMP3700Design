@@ -93,15 +93,84 @@ class DataBaseManager {
 
 
 
-	public static Boolean updateProduct(int _id) {
-		return true;
+	public static Boolean updateProduct(String _name, int _id, double _price, String _vendor, double _tax,  
+		double _weight) {
+		try {
+			Class.forName(jbdc);
+			Connection con = DriverManager.getConnection(hostDB, user, pass);
+			
+			String query = "UPDATE product_table set Name = ?, Price = ?, Vendor = ?, Tax = ?, Weight = ?" +
+			" WHERE ID = ?";
+			PreparedStatement preparedStmt = con.prepareStatement(query);
+			preparedStmt.setString(1, _name);
+     	    preparedStmt.setDouble(2, _price);
+      		preparedStmt.setString(3, _vendor);
+     	    preparedStmt.setDouble(4, _tax);
+     	    preparedStmt.setDouble(5, _weight);
+     	    preparedStmt.setInt(6, _id);
+
+     	    if (prepareStmt.executeUpdate()) {
+     	    	return true;
+     	    }
+			
+			
+			con.close();
+		} catch (Exception e) {System.out.println(e);}
+
+		return false;
 	}
 
 	public static Boolean addProduct(String _name, int _id, double _price, String _vendor, double _tax,  
 		double _weight) {
-		return true;
+		try {
+			Class.forName(jbdc);
+			Connection con = DriverManager.getConnection(hostDB, user, pass);
+			
+			String query = "INSERT INTO product_table(Name, ID, Price, Vendor, Tax, Weight) " +
+			"VALUES(?, ?, ?, ?, ?)";
+			PreparedStatement preparedStmt = con.prepareStatement(query);
+			preparedStmt.setString(1, _name);
+      		preparedStmt.setInt(2, _id);
+     	    preparedStmt.setDouble(3, _price);
+      		preparedStmt.setString(4, _vendor);
+     	    preparedStmt.setDouble(5, _tax);
+     	    preparedStmt.setDouble(6, _weight);
 
+     	    if (prepareStmt.execute()) {
+     	    	return true;
+     	    }
+		
+			
+			con.close();
+		} catch (Exception e) {System.out.println(e);}
 
+		return false;
+	}
+
+	public static Boolean addOrder(int _id, String _date, String _payMethod, double _total, String _items, String _quantities) {
+		try {
+			Class.forName(jbdc);
+			Connection con = DriverManager.getConnection(hostDB, user, pass);
+			
+			String query = "INSERT INTO order_table(ID, Date, PaymentMethod, Total, Items, Quantities) " +
+			"VALUES(?, ?, ?, ?, ?, ?)";
+			PreparedStatement preparedStmt = con.prepareStatement(query);
+			preparedStmt.setString(1, _id);
+      		preparedStmt.setInt(2, _date);
+     	    preparedStmt.setDouble(3, _payMethod);
+      		preparedStmt.setString(4, _total);
+     	    preparedStmt.setDouble(5, _items);
+     	    preparedStmt.setDouble(6, _quantities);
+
+     	    if (prepareStmt.execute()) {
+     	    	return true;
+     	    }
+		
+			
+			con.close();
+		} catch (Exception e) {System.out.println(e);}
+
+		return false;
 	}
 
 	public static void main(String args[]){  
