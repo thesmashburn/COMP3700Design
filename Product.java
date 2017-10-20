@@ -6,7 +6,7 @@ public class Product {
 	private double tax;
 	private double weight;
 
-	Product() {
+	public Product() {
 		name = "";
 		id = 0;
 		price = 0.0;
@@ -15,7 +15,7 @@ public class Product {
 		weight = 0.0;
 	}
 
-	Product(String _name, int _id, double _price, String _vendor, double _tax,  
+	public Product(String _name, int _id, double _price, String _vendor, double _tax,  
 		double _weight) {
 		name = _name;
 		id = _id;
