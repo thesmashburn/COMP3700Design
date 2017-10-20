@@ -6,7 +6,7 @@ public class Order {
 	private String items;
 	private String quantities;
 
-	Order() {
+	public Order() {
 		id = 0;
 		date = "";
 		payMethod = "";
@@ -16,7 +16,7 @@ public class Order {
 
 	}
 
-	Order(int _id, String _date, String _payMethod, double _total, String _items, String _quantities) {
+	public Order(int _id, String _date, String _payMethod, double _total, String _items, String _quantities) {
 		id = _id;
 		date = _date;
 		payMethod = _payMethod;
