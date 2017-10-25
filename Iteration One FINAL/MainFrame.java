@@ -599,6 +599,7 @@ public class MainFrame extends javax.swing.JFrame {
                 card.show(mainPanel, "card3");
                 homeNoticeLabel.setText("Product succesfully added!");
                 addInputsReset();
+                MarketPlaceDriver.mainSys.updateLists();
             }
             
             else {
@@ -697,6 +698,7 @@ public class MainFrame extends javax.swing.JFrame {
                 CardLayout card = (CardLayout)mainPanel.getLayout();
                 card.show(mainPanel, "card3");
                 homeNoticeLabel.setText("Order sucessfully processed!");
+                MarketPlaceDriver.mainSys.updateLists();
             }
             else errorLabelCheckout.setText("Problem connecting to server");
         }
@@ -775,7 +777,7 @@ public class MainFrame extends javax.swing.JFrame {
             addAProductWarning.setText("* Re-evaluate fields");
             return false;
         }
-        else if (prod.getID() == 0) {
+        else if (prod.getID() != 0) {
             addAProductWarning.setVisible(true);
             addAProductWarning.setText("* Product with the ID already exists");
             return false;

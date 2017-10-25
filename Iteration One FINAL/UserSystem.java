@@ -104,6 +104,12 @@ public class UserSystem {
             return false;
         }
         
+        public void updateLists() {
+             currentProductList = DataBaseManager.getProducts();
+             currentOrderList = DataBaseManager.getOrders();
+            
+        }
+        
         public int getCurrentCount() {return currentCheckoutOrder.getCount();}
         public double getCurrentTotal() {return currentCheckoutOrder.getTotal();}
         public double getCurrentSubTotal() {return currentCheckoutOrder.getSubTotal();}
