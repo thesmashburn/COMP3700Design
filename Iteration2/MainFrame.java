@@ -7,6 +7,7 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import java.text.NumberFormat;
+import java.util.ArrayList; 
 /**
  *
  * @author thesmashburn
@@ -42,6 +43,7 @@ public class MainFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         mainPanel = new javax.swing.JPanel();
         homeContainer = new javax.swing.JPanel();
         addButton = new javax.swing.JButton();
@@ -49,6 +51,9 @@ public class MainFrame extends javax.swing.JFrame {
         updateButton = new javax.swing.JButton();
         homeHeader = new javax.swing.JLabel();
         homeNoticeLabel = new javax.swing.JLabel();
+        homeReportButton = new javax.swing.JButton();
+        homeManagementButton = new javax.swing.JButton();
+        homeNameLabel = new javax.swing.JLabel();
         addContainer = new javax.swing.JPanel();
         submitButton = new javax.swing.JButton();
         backButton = new javax.swing.JButton();
@@ -112,7 +117,30 @@ public class MainFrame extends javax.swing.JFrame {
         settingsBackButton = new javax.swing.JButton();
         settingsNoticeLabel = new javax.swing.JLabel();
         usersContainer = new javax.swing.JPanel();
+        usersHeaderLabel = new javax.swing.JLabel();
+        usersSubmitButton = new javax.swing.JButton();
+        usersBackButton = new javax.swing.JButton();
+        usersNameField = new javax.swing.JTextField();
+        usersProfilePicField = new javax.swing.JTextField();
+        usersDisclaimerLabel = new javax.swing.JLabel();
+        usersNameLabel = new javax.swing.JLabel();
+        usersProfilePicLabel = new javax.swing.JLabel();
+        usersManagerCheck = new javax.swing.JCheckBox();
+        userNoticeLabel = new javax.swing.JLabel();
         reportContainer = new javax.swing.JPanel();
+        reportHeaderLabel = new javax.swing.JLabel();
+        reportBackButton = new javax.swing.JButton();
+        reportNamePane = new javax.swing.JScrollPane();
+        reportProductName = new javax.swing.JList<>();
+        reportSalePane = new javax.swing.JScrollPane();
+        reportProductSale = new javax.swing.JList<>();
+        reportRevenuePane = new javax.swing.JScrollPane();
+        reportProductRevenue = new javax.swing.JList<>();
+        reportIDPane = new javax.swing.JScrollPane();
+        reportProductID = new javax.swing.JList<>();
+        reportSortSelect = new javax.swing.JComboBox<>();
+        reportRevenueLabel = new javax.swing.JLabel();
+        reportRevenueValue = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -142,49 +170,86 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
 
-        homeHeader.setFont(new java.awt.Font("Lucida Grande", 0, 48)); // NOI18N
+        homeHeader.setFont(new java.awt.Font("Lucida Grande", 0, 36)); // NOI18N
         homeHeader.setText("Welcome to MarketPlace!");
 
         homeNoticeLabel.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
+
+        homeReportButton.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
+        homeReportButton.setText("Business Report");
+        homeReportButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                homeReportButtonActionPerformed(evt);
+            }
+        });
+
+        homeManagementButton.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
+        homeManagementButton.setText("User Management");
+        homeManagementButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                homeManagementButtonActionPerformed(evt);
+            }
+        });
+
+        homeNameLabel.setText("jLabel1");
+        homeNameLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                homeNameLabelMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout homeContainerLayout = new javax.swing.GroupLayout(homeContainer);
         homeContainer.setLayout(homeContainerLayout);
         homeContainerLayout.setHorizontalGroup(
             homeContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(homeContainerLayout.createSequentialGroup()
+                .addGap(234, 234, 234)
+                .addComponent(homeNoticeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 355, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(homeContainerLayout.createSequentialGroup()
+                .addGap(32, 32, 32)
+                .addGroup(homeContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(addButton, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(updateButton, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 202, Short.MAX_VALUE)
+                .addGroup(homeContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(checkoutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(homeContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(homeManagementButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 254, Short.MAX_VALUE)
+                        .addComponent(homeReportButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, homeContainerLayout.createSequentialGroup()
-                .addContainerGap(69, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(homeContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, homeContainerLayout.createSequentialGroup()
-                        .addGap(0, 62, Short.MAX_VALUE)
                         .addComponent(homeHeader)
-                        .addGap(109, 109, 109))
-                    .addGroup(homeContainerLayout.createSequentialGroup()
-                        .addComponent(updateButton, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(checkoutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(63, 63, 63))))
-            .addGroup(homeContainerLayout.createSequentialGroup()
-                .addGroup(homeContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(homeContainerLayout.createSequentialGroup()
-                        .addGap(261, 261, 261)
-                        .addComponent(addButton, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(homeContainerLayout.createSequentialGroup()
-                        .addGap(234, 234, 234)
-                        .addComponent(homeNoticeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 355, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 0, Short.MAX_VALUE))
+                        .addGap(175, 175, 175))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, homeContainerLayout.createSequentialGroup()
+                        .addComponent(homeNameLabel)
+                        .addGap(30, 30, 30))))
         );
         homeContainerLayout.setVerticalGroup(
             homeContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, homeContainerLayout.createSequentialGroup()
-                .addGap(24, 24, 24)
+                .addContainerGap()
+                .addComponent(homeNameLabel)
+                .addGap(3, 3, 3)
                 .addComponent(homeHeader)
-                .addGap(88, 88, 88)
+                .addGap(39, 39, 39)
                 .addGroup(homeContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(updateButton, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(checkoutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(58, 58, 58)
-                .addComponent(addButton, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 70, Short.MAX_VALUE)
+                .addGroup(homeContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(homeContainerLayout.createSequentialGroup()
+                        .addGap(28, 28, 28)
+                        .addComponent(addButton, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(homeContainerLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
+                        .addComponent(homeReportButton, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(26, 26, 26)
+                        .addComponent(homeManagementButton, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(41, 41, 41)))
                 .addComponent(homeNoticeLabel)
                 .addGap(36, 36, 36))
         );
@@ -599,8 +664,18 @@ public class MainFrame extends javax.swing.JFrame {
         settingsPasswordLabel.setText("Password:");
 
         settingUpdateButton.setText("Update");
+        settingUpdateButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                settingUpdateButtonActionPerformed(evt);
+            }
+        });
 
         settingsBackButton.setText("Back");
+        settingsBackButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                settingsBackButtonActionPerformed(evt);
+            }
+        });
 
         settingsNoticeLabel.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
         settingsNoticeLabel.setForeground(new java.awt.Color(255, 51, 51));
@@ -662,28 +737,185 @@ public class MainFrame extends javax.swing.JFrame {
 
         mainPanel.add(settingsContainer, "card7");
 
+        usersHeaderLabel.setFont(new java.awt.Font("Lucida Grande", 0, 48)); // NOI18N
+        usersHeaderLabel.setText("Create New User");
+
+        usersSubmitButton.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
+        usersSubmitButton.setText("Create");
+        usersSubmitButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                usersSubmitButtonActionPerformed(evt);
+            }
+        });
+
+        usersBackButton.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
+        usersBackButton.setText("Back");
+        usersBackButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                usersBackButtonActionPerformed(evt);
+            }
+        });
+
+        usersDisclaimerLabel.setText("*note that the password will be set to password by default");
+
+        usersNameLabel.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
+        usersNameLabel.setText("Username");
+
+        usersProfilePicLabel.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
+        usersProfilePicLabel.setText("Profile Picture URL");
+
+        usersManagerCheck.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
+        usersManagerCheck.setText("Manager");
+
+        userNoticeLabel.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
+        userNoticeLabel.setForeground(new java.awt.Color(255, 51, 51));
+
         javax.swing.GroupLayout usersContainerLayout = new javax.swing.GroupLayout(usersContainer);
         usersContainer.setLayout(usersContainerLayout);
         usersContainerLayout.setHorizontalGroup(
             usersContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 821, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, usersContainerLayout.createSequentialGroup()
+                .addGap(197, 197, 197)
+                .addComponent(userNoticeLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(usersContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(usersDisclaimerLabel)
+                    .addGroup(usersContainerLayout.createSequentialGroup()
+                        .addGroup(usersContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(usersHeaderLabel)
+                            .addComponent(usersSubmitButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(37, 37, 37)
+                        .addComponent(usersBackButton, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(43, 43, 43))
+            .addGroup(usersContainerLayout.createSequentialGroup()
+                .addGap(205, 205, 205)
+                .addGroup(usersContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(usersManagerCheck)
+                    .addGroup(usersContainerLayout.createSequentialGroup()
+                        .addGroup(usersContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(usersProfilePicLabel)
+                            .addComponent(usersNameLabel))
+                        .addGap(18, 18, 18)
+                        .addGroup(usersContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(usersNameField, javax.swing.GroupLayout.DEFAULT_SIZE, 257, Short.MAX_VALUE)
+                            .addComponent(usersProfilePicField))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         usersContainerLayout.setVerticalGroup(
             usersContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 647, Short.MAX_VALUE)
+            .addGroup(usersContainerLayout.createSequentialGroup()
+                .addGap(33, 33, 33)
+                .addComponent(usersHeaderLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(usersDisclaimerLabel)
+                .addGap(41, 41, 41)
+                .addGroup(usersContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(usersNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(usersNameLabel))
+                .addGap(18, 18, 18)
+                .addGroup(usersContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(usersProfilePicField, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(usersProfilePicLabel))
+                .addGap(56, 56, 56)
+                .addComponent(usersManagerCheck)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 172, Short.MAX_VALUE)
+                .addGroup(usersContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(usersBackButton, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(usersSubmitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(userNoticeLabel))
+                .addGap(55, 55, 55))
         );
 
         mainPanel.add(usersContainer, "card8");
+
+        reportHeaderLabel.setFont(new java.awt.Font("Lucida Grande", 0, 48)); // NOI18N
+        reportHeaderLabel.setText("Business Report");
+
+        reportBackButton.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
+        reportBackButton.setText("Back");
+        reportBackButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                reportBackButtonActionPerformed(evt);
+            }
+        });
+
+        reportNamePane.setViewportView(reportProductName);
+
+        reportSalePane.setViewportView(reportProductSale);
+
+        reportRevenuePane.setViewportView(reportProductRevenue);
+
+        reportIDPane.setViewportView(reportProductID);
+
+        reportSortSelect.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ID", "Name", "Number Sold", "Revenue" }));
+        reportSortSelect.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                reportSortSelectActionPerformed(evt);
+            }
+        });
+
+        reportRevenueLabel.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
+        reportRevenueLabel.setText("Total Revenue");
+
+        reportRevenueValue.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
 
         javax.swing.GroupLayout reportContainerLayout = new javax.swing.GroupLayout(reportContainer);
         reportContainer.setLayout(reportContainerLayout);
         reportContainerLayout.setHorizontalGroup(
             reportContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 821, Short.MAX_VALUE)
+            .addGroup(reportContainerLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(reportNamePane, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(reportSalePane, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(reportRevenuePane, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(reportContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(reportContainerLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(reportBackButton)
+                        .addGap(25, 25, 25))
+                    .addGroup(reportContainerLayout.createSequentialGroup()
+                        .addGap(113, 113, 113)
+                        .addComponent(reportRevenueValue)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, reportContainerLayout.createSequentialGroup()
+                .addContainerGap(266, Short.MAX_VALUE)
+                .addComponent(reportHeaderLabel)
+                .addGap(185, 185, 185))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, reportContainerLayout.createSequentialGroup()
+                .addGap(119, 119, 119)
+                .addComponent(reportIDPane, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(reportContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(reportSortSelect, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(reportRevenueLabel))
+                .addGap(91, 91, 91))
         );
         reportContainerLayout.setVerticalGroup(
             reportContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 647, Short.MAX_VALUE)
+            .addGroup(reportContainerLayout.createSequentialGroup()
+                .addGap(32, 32, 32)
+                .addComponent(reportHeaderLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(reportSortSelect, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(reportContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(reportContainerLayout.createSequentialGroup()
+                        .addGap(92, 92, 92)
+                        .addComponent(reportRevenueLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(reportRevenueValue)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 248, Short.MAX_VALUE)
+                        .addComponent(reportBackButton, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(53, 53, 53))
+                    .addGroup(reportContainerLayout.createSequentialGroup()
+                        .addGroup(reportContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(reportRevenuePane, javax.swing.GroupLayout.DEFAULT_SIZE, 414, Short.MAX_VALUE)
+                            .addComponent(reportSalePane)
+                            .addComponent(reportNamePane, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(reportIDPane, javax.swing.GroupLayout.Alignment.LEADING))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
         mainPanel.add(reportContainer, "card9");
@@ -885,19 +1117,132 @@ public class MainFrame extends javax.swing.JFrame {
         if (MarketPlaceDriver.mainSys.authenticateUser(username, password)) {
              CardLayout card = (CardLayout)mainPanel.getLayout();
              card.show(mainPanel, "card3");
+             homeNameLabel.setText(username);
              
              if (!MarketPlaceDriver.mainSys.isAdmin()) {
                  //setvisibility
+                 homeReportButton.setVisible(false);
+                 homeManagementButton.setVisible(false);
+                 
              }
              
              
         }
+        else {
+            loginNoticeLabel.setText("Incorrect login.");
+        }
        
         
     }//GEN-LAST:event_loginSubmitButtonActionPerformed
+
+    private void homeNameLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_homeNameLabelMouseClicked
+        // TODO add your handling code here:
+        CardLayout card = (CardLayout)mainPanel.getLayout();
+        card.show(mainPanel, "card7");
+    }//GEN-LAST:event_homeNameLabelMouseClicked
+
+    private void homeManagementButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeManagementButtonActionPerformed
+        // TODO add your handling code here:
+        CardLayout card = (CardLayout)mainPanel.getLayout();
+        card.show(mainPanel, "card8");
+    }//GEN-LAST:event_homeManagementButtonActionPerformed
+
+    private void homeReportButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeReportButtonActionPerformed
+        // TODO add your handling code here:
+        CardLayout card = (CardLayout)mainPanel.getLayout();
+        card.show(mainPanel, "card9");
+        populateReport();
+        
+        
+         
+    }//GEN-LAST:event_homeReportButtonActionPerformed
+
+    private void settingsBackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_settingsBackButtonActionPerformed
+        // TODO add your handling code here:
+        CardLayout card = (CardLayout)mainPanel.getLayout();
+        card.show(mainPanel, "card3");
+    }//GEN-LAST:event_settingsBackButtonActionPerformed
+
+    private void settingUpdateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_settingUpdateButtonActionPerformed
+        // TODO add your handling code here:
+        //Update the current user information as well as the profile pcture field and the names and such.
+    }//GEN-LAST:event_settingUpdateButtonActionPerformed
+
+    private void usersSubmitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usersSubmitButtonActionPerformed
+        // TODO add your handling code here:
+        //do te routine check for correct fields of this user then make sure to assign default pw.
+        String username = usersNameField.getText();
+        Boolean exists = false;
+        ArrayList<User> currentUserList = MarketPlaceDriver.mainSys.getCurrentUserList();
+        for (User user : currentUserList) {
+            if ((user.getName().toLowerCase()).equals(username.toLowerCase())) {
+                exists = true;
+                break;
+            }
+        }
+        
+        if (!exists) {
+            String profilepic = "https://www.drupal.org/files/issues/default-avatar.png";
+            int usertype = 1;
+            String password = "password";
+            if (usersProfilePicField.getText() != "") profilepic = usersProfilePicField.getText();
+            if (usersManagerCheck.isSelected()) usertype = 2;
+            DataBaseManager.addUser(username, password, profilepic, usertype);
+            
+            CardLayout card = (CardLayout)mainPanel.getLayout();
+            card.show(mainPanel, "card3");
+            homeNoticeLabel.setText("User Succesfully Added!");
+        }
+        else userNoticeLabel.setText("*User already exists");
+        
+    }//GEN-LAST:event_usersSubmitButtonActionPerformed
+
+    private void usersBackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usersBackButtonActionPerformed
+        // TODO add your handling code here:
+        CardLayout card = (CardLayout)mainPanel.getLayout();
+        card.show(mainPanel, "card3");
+    }//GEN-LAST:event_usersBackButtonActionPerformed
+
+    private void reportBackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reportBackButtonActionPerformed
+        // TODO add your handling code here:
+        CardLayout card = (CardLayout)mainPanel.getLayout();
+        card.show(mainPanel, "card3");
+    }//GEN-LAST:event_reportBackButtonActionPerformed
+
+    private void reportSortSelectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reportSortSelectActionPerformed
+        // TODO add your handling code here:
+        //When someone change sthe sort method of the business report.
+        clearInputsCheckout();
+        populateReport();
+    }//GEN-LAST:event_reportSortSelectActionPerformed
     
     
      /* THIS IS THE SECTION FOR GENERAL METHODS */
+    
+    public void populateReport() {
+        double totalRevenue = 0;
+         NumberFormat formatter = NumberFormat.getCurrencyInstance();
+        //Time to initiate this bitch
+       // ArrayList<Product> productList = MarketPlaceDriver.mainSys.getCurrentProductList();
+        //Sort based on the thing
+        String sortValue = reportSortSelect.getSelectedItem().toString();
+        ArrayList<Product> productList = MarketPlaceDriver.mainSys.getSortedProducts(sortValue);
+        DefaultListModel idModel = (DefaultListModel) reportProductID.getModel();
+        DefaultListModel nameModel = (DefaultListModel) reportProductName.getModel();
+        DefaultListModel quanModel = (DefaultListModel) reportProductSale.getModel();
+        DefaultListModel revModel = (DefaultListModel) reportProductRevenue.getModel();
+        for (Product product : productList) {
+           
+            idModel.addElement(product.getID());
+            nameModel.addElement(product.getName());
+            quanModel.addElement(product.getNumberSold());
+            revModel.addElement(formatter.format(product.getRevenue()));
+            totalRevenue += product.getRevenue();
+            
+        }
+        String formattedTotal = formatter.format(totalRevenue);
+        reportRevenueValue.setText(formattedTotal);
+    }
 
     /*  public boolean verifyNewProduct(String nameIn, String idIn, String priceIn, String vendorIn, String taxIn, String weightIn) {
         
@@ -995,6 +1340,11 @@ public class MainFrame extends javax.swing.JFrame {
         nameList.setModel(new DefaultListModel());
         quantityList.setModel(new DefaultListModel());
         priceList.setModel(new DefaultListModel());
+        reportProductID.setModel(new DefaultListModel());
+        reportProductName.setModel(new DefaultListModel());
+        reportProductSale.setModel(new DefaultListModel());
+        reportProductRevenue.setModel(new DefaultListModel());
+        
         subtotalLabel.setText("");
         totalLabel.setText("");
         productIDField.setText("");
@@ -1042,6 +1392,7 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JButton backButton;
     private javax.swing.JButton backButtonCheck;
     private javax.swing.JButton backButtonUpd;
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JLabel checkAddItem;
     private javax.swing.JLabel checkHead;
     private javax.swing.JLabel checkName;
@@ -1057,7 +1408,10 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JLabel errorLabelCheckout;
     private javax.swing.JPanel homeContainer;
     private javax.swing.JLabel homeHeader;
+    private javax.swing.JButton homeManagementButton;
+    private javax.swing.JLabel homeNameLabel;
     private javax.swing.JLabel homeNoticeLabel;
+    private javax.swing.JButton homeReportButton;
     private javax.swing.JPanel loginContainer;
     private javax.swing.JLabel loginHeader;
     private javax.swing.JTextField loginNameField;
@@ -1075,7 +1429,20 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JTextField quantityField;
     private javax.swing.JList<String> quantityList;
     private javax.swing.JScrollPane quantityScroll;
+    private javax.swing.JButton reportBackButton;
     private javax.swing.JPanel reportContainer;
+    private javax.swing.JLabel reportHeaderLabel;
+    private javax.swing.JScrollPane reportIDPane;
+    private javax.swing.JScrollPane reportNamePane;
+    private javax.swing.JList<String> reportProductID;
+    private javax.swing.JList<String> reportProductName;
+    private javax.swing.JList<String> reportProductRevenue;
+    private javax.swing.JList<String> reportProductSale;
+    private javax.swing.JLabel reportRevenueLabel;
+    private javax.swing.JScrollPane reportRevenuePane;
+    private javax.swing.JLabel reportRevenueValue;
+    private javax.swing.JScrollPane reportSalePane;
+    private javax.swing.JComboBox<String> reportSortSelect;
     private javax.swing.JButton settingUpdateButton;
     private javax.swing.JButton settingsBackButton;
     private javax.swing.JPanel settingsContainer;
@@ -1107,6 +1474,16 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JLabel updateVendorLabel;
     private javax.swing.JTextField updateWeightField;
     private javax.swing.JLabel updateWeightLabel;
+    private javax.swing.JLabel userNoticeLabel;
+    private javax.swing.JButton usersBackButton;
     private javax.swing.JPanel usersContainer;
+    private javax.swing.JLabel usersDisclaimerLabel;
+    private javax.swing.JLabel usersHeaderLabel;
+    private javax.swing.JCheckBox usersManagerCheck;
+    private javax.swing.JTextField usersNameField;
+    private javax.swing.JLabel usersNameLabel;
+    private javax.swing.JTextField usersProfilePicField;
+    private javax.swing.JLabel usersProfilePicLabel;
+    private javax.swing.JButton usersSubmitButton;
     // End of variables declaration//GEN-END:variables
 }

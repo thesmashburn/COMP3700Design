@@ -20,7 +20,7 @@ class DataBaseManager {
 			ResultSet product = stmt.executeQuery(query);
 			
 			if (product != null) {
-				return new Product(product.getString(1), product.getInt(2), product.getDouble(3), product.getString(4), product.getDouble(5), product.getDouble(6));
+				return new Product(product.getString(1), product.getInt(2), product.getDouble(3), product.getString(4), product.getDouble(5), product.getDouble(6), product.getDouble(7), product.getDouble(8));
 			}
                         con.close();
 		} catch (Exception e) {System.out.println(e);}
@@ -67,7 +67,7 @@ class DataBaseManager {
 		return null;
         }
         
-        //This is a function to get a product item by ID
+        //This is a function to get all users
 	public static ArrayList<User> getUsers() {
 		ArrayList<User> result = new ArrayList<User>();
 		try {
@@ -88,6 +88,53 @@ class DataBaseManager {
 
 		return result;
 	}
+        //The function used to update user information
+        public static Boolean updateUser(String nameIn, String profileIn, String passwordIn) {
+		try {
+                    Class.forName(jbdc);
+                    Connection con = DriverManager.getConnection(hostDB, user, pass);
+			
+                    String query = "UPDATE user_table set password = ?, profile_pic = ? WHERE username = ? ";
+                    PreparedStatement preparedStmt = con.prepareStatement(query);
+                    preparedStmt.setString(1, passwordIn);
+                    preparedStmt.setString(2, profileIn);
+                    preparedStmt.setString(3, nameIn);
+                    
+
+                    if (preparedStmt.executeUpdate() != 0) {
+                            return true;
+                    }
+                    con.close();
+			
+		} catch (Exception e) {System.out.println(e);}
+
+		return false;
+	}
+        
+        //This is the function for adding a new user
+        public static Boolean addUser(String _name, String _pass, String _pic, int _type) {
+		try {
+                    Class.forName(jbdc);
+                    Connection con = DriverManager.getConnection(hostDB, user, pass);
+			
+                    String query = "INSERT INTO user_table(username, password, profile_pic, user_type) " +
+                    "VALUES(?, ?, ?, ?)";
+                    PreparedStatement preparedStmt = con.prepareStatement(query);
+                    preparedStmt.setString(1, _name);
+      		    preparedStmt.setString(2, _pass);
+     	            preparedStmt.setString(3, _pic);
+      		    preparedStmt.setInt(4, _type);
+     	            
+
+                    if (preparedStmt.executeUpdate() != 0) {
+                        return true;
+                    }
+                    con.close();
+		} catch (Exception e) {System.out.println(e);}
+		return false;
+	}
+        
+        
 
 	//This is a function to get a product item by ID
 	public static ArrayList<Product> getProducts() {
@@ -102,7 +149,7 @@ class DataBaseManager {
 			
 			if (product != null) {
 				while (product.next()) {
-					result.add(new Product(product.getString(1), product.getInt(2), product.getDouble(3), product.getString(4), product.getDouble(5), product.getDouble(6)));
+					result.add(new Product(product.getString(1), product.getInt(2), product.getDouble(3), product.getString(4), product.getDouble(5), product.getDouble(6), product.getDouble(7), product.getDouble(8)));
 				}
 			}
 			con.close();
@@ -161,6 +208,28 @@ class DataBaseManager {
 
 		return false;
 	}
+        
+        public static Boolean updateProductBusinessInfo(int _id, double _numberSold, double _revenue) {
+            try {
+                    Class.forName(jbdc);
+                    Connection con = DriverManager.getConnection(hostDB, user, pass);
+			
+                    String query = "UPDATE product_table set Number_Sold = Number_Sold + ?, Revenue = Revenue + ?" +
+                    " WHERE ID = ?";
+                    PreparedStatement preparedStmt = con.prepareStatement(query);
+                    preparedStmt.setDouble(1, _numberSold);
+                    preparedStmt.setDouble(2, _revenue);
+                    preparedStmt.setInt(3, _id);
+                    
+                    if (preparedStmt.executeUpdate() != 0) {
+                            return true;
+                    }
+                    con.close();
+			
+		} catch (Exception e) {System.out.println(e);}
+
+		return false;
+        }
 
 	public static Boolean addProduct(String _name, int _id, double _price, String _vendor, double _tax,  
 		double _weight) {

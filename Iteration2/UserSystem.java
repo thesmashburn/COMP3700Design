@@ -2,6 +2,8 @@ import java.io.IOException;
 import java.util.ArrayList; 
 import java.util.Date;
 import java.text.*;
+import java.util.Collections;
+import java.util.Comparator;
 
 
 public class UserSystem {
@@ -105,6 +107,8 @@ public class UserSystem {
             for (CheckoutItem check : list) {
                 itemStr += check.getID() + ",";
                 quanStr += check.getQuantity() + ",";
+                double tempRevenue = check.getPrice() * check.getQuantity();
+                DataBaseManager.updateProductBusinessInfo(check.getID(), check.getQuantity(), tempRevenue);
             }
             itemStr = itemStr.substring(0, itemStr.length() - 1);
             quanStr = quanStr.substring(0, quanStr.length() - 1);
@@ -136,12 +140,56 @@ public class UserSystem {
         public void updateLists() {
              currentProductList = DataBaseManager.getProducts();
              currentOrderList = DataBaseManager.getOrders();
+             currentUserList = DataBaseManager.getUsers();
             
         }
         
+       
+        public class RevenueSorter implements Comparator<Product>{
+
+            public int compare(Product one, Product another){
+                int returnVal = 0;
+                if(one.getRevenue() < another.getRevenue())returnVal =  1;
+                else if(one.getRevenue() > another.getRevenue()) returnVal =  -1;
+                else if(one.getRevenue() == another.getRevenue()) returnVal =  0;
+
+                return returnVal;
+
+            }
+        }
+        
+        public class QuantitySorter implements Comparator<Product>{
+
+            public int compare(Product one, Product another){
+                int returnVal = 0;
+                if(one.getNumberSold() < another.getNumberSold())returnVal =  1;
+                else if(one.getNumberSold() > another.getNumberSold()) returnVal =  -1;
+                else if(one.getNumberSold() == another.getNumberSold()) returnVal =  0;
+
+                return returnVal;
+
+            }
+        }
+
+
+
+        public ArrayList<Product> getSortedProducts(String _sort) {
+            ArrayList<Product> temp = currentProductList;
+            if (_sort.equals("ID")) { Collections.sort(temp, (o1, o2) -> o1.getID() - o2.getID());}
+            else if (_sort.equals("Name")) { Collections.sort(temp, (o1, o2) -> (o1.getName().compareToIgnoreCase(o2.getName())));}
+            else if (_sort.equals("Number Sold")) { Collections.sort(temp, new QuantitySorter());}
+            else if (_sort.equals("Revenue")) { Collections.sort(temp, new RevenueSorter());}
+            
+            return temp;
+             
+        }
+        
         public int getCurrentCount() {return currentCheckoutOrder.getCount();}
+        public ArrayList<User> getCurrentUserList() {return currentUserList;}
         public double getCurrentTotal() {return currentCheckoutOrder.getTotal();}
         public double getCurrentSubTotal() {return currentCheckoutOrder.getSubTotal();}
+        
+       
         
        
 
